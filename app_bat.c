@@ -74,7 +74,6 @@ static void battery_low_check(uint16_t volt_mv)
     } else {
         if (volt_mv < ro_bat_cfg()->battery_low_power_off_voltage) {
             context->critical_low = true;
-            app_pm_handle_battery_critical_low();
         } else if (volt_mv < ro_bat_cfg()->battery_low_event_voltage) {
             if (!context->is_low) {
                 app_send_msg(MSG_TYPE_BAT, BAT_MSG_ID_LOW, NULL, 0);
